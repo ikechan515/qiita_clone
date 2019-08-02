@@ -59,8 +59,6 @@ RSpec.describe "Articles", type: :request do
     let(:params) { { article: attributes_for(:article) } }
     let(:headers) { authentication_headers_for(current_user) }
 
-
-
     it "記事のレコードが作成できる" do
       aggregate_failures do
         expect { subject }.to change { Article.count }.by(1)

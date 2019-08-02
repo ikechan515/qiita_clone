@@ -69,7 +69,6 @@ RSpec.describe "Api::V1::Auth::Sessions", type: :request do
     subject { delete(destroy_api_v1_user_session_path, headers: headers) }
 
     context "ログイン済みのユーザーの情報を送ったとき" do
-
       let(:user) { create(:user) }
       let!(:headers) { authentication_headers_for(user) }
 
