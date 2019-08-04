@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default_container:
     docker:
-      - image: circleci/ruby:2.6.3-stretch
+      - image: circleci/ruby:2.4.1-node-browsers
       environment:
           RAILS_ENV: test
           BUNDLE_JOBS: 4
