@@ -98,7 +98,7 @@ export default class Header extends Vue {
     alert("マイページへ移動");
   }
   moveToDrafts(): void {
-    alert("下書きページへ移動");
+    Router.push("/articles/drafts");
   }
 
   private refresh(): void {

@@ -13,7 +13,6 @@
       ></v-textarea>
       <div v-html="compiledMarkdown(this.body)" class="preview">a</div>
     </div>
-
     <div class="text-xs-right">
       <v-btn
         @click="createOrUpdateArticle('published')"
@@ -35,7 +34,6 @@ import { Vue, Component } from "vue-property-decorator";
 import Router from "../router/router";
 import marked from "marked";
 import hljs from "highlight.js";
-
 const headers = {
   headers: {
     Authorization: "Bearer",
@@ -46,18 +44,15 @@ const headers = {
   }
 };
 @Component
-export default class ArticlesContainer extends Vue {
+export default class EditDraftArticleContainer extends Vue {
   id: string = "";
   title: string = "";
   body: string = "";
-
   async mounted(): Promise<void> {
-    // only update
     if (this.$route.params.id) {
       await this.fetchArticle(this.$route.params.id);
     }
   }
-
   async created(): Promise<void> {
     const renderer = new marked.Renderer();
     let data = "";
@@ -82,10 +77,9 @@ export default class ArticlesContainer extends Vue {
       return marked(text);
     };
   }
-
   async fetchArticle(id: string): Promise<void> {
     await axios
-      .get(`/api/v1/articles/${id}`)
+      .get(`/api/v1/articles/drafts/${id}`, headers)
       .then(response => {
         this.id = response.data.id;
         this.title = response.data.title;
@@ -106,12 +100,16 @@ export default class ArticlesContainer extends Vue {
       body: this.body,
       status: Statuses[status]
     };
-  if (this.id) {
+    if (this.id) {
       // update
       await axios
         .patch(`/api/v1/articles/${this.id}`, params, headers)
         .then(_response => {
-          Router.push("/articles/drafts");
+          if (status == Statuses["published"]) {
+            Router.push("/");
+          } else {
+            Router.push("/articles/drafts");
+          }
         })
         .catch(e => {
           // TODO: 適切な Error 表示
@@ -122,7 +120,11 @@ export default class ArticlesContainer extends Vue {
       await axios
         .post("/api/v1/articles", params, headers)
         .then(_response => {
-          Router.push("/articles/drafts");
+          if (status == Statuses["published"]) {
+            Router.push("/");
+          } else {
+            Router.push("/articles/drafts");
+          }
         })
         .catch(e => {
           // TODO: 適切な Error 表示
@@ -143,15 +145,6 @@ export default class ArticlesContainer extends Vue {
 .title-form {
   flex: none;
 }
-</style>
-
-<style lang="scss">
-.body-form > .v-input__control {
-  height: 100%;
-}
-.v-text-field .v-text-field__details {
-  display: none;
-}
 .edit-area {
   height: 100%;
   display: flex;
@@ -165,5 +158,14 @@ export default class ArticlesContainer extends Vue {
   border-radius: 4px;
   border-left: none;
   overflow: auto;
+}
+</style>
+
+<style lang="scss">
+.body-form > .v-input__control {
+  height: 100%;
+}
+.v-text-field .v-text-field__details {
+  display: none;
 }
 </style>
