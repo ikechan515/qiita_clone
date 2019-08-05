@@ -111,7 +111,11 @@ export default class ArticlesContainer extends Vue {
       await axios
         .patch(`/api/v1/articles/${this.id}`, params, headers)
         .then(_response => {
-          Router.push("/articles/drafts");
+          if (status == Statuses["published"]) {
+            Router.push("/");
+          } else {
+            Router.push("/articles/drafts");
+          }
         })
         .catch(e => {
           // TODO: 適切な Error 表示
@@ -122,7 +126,11 @@ export default class ArticlesContainer extends Vue {
       await axios
         .post("/api/v1/articles", params, headers)
         .then(_response => {
-          Router.push("/articles/drafts");
+          if (status == Statuses["published"]) {
+            Router.push("/");
+          } else {
+            Router.push("/articles/drafts");
+          }
         })
         .catch(e => {
           // TODO: 適切な Error 表示
