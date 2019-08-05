@@ -20,7 +20,7 @@
 
         <v-list>
           <v-list-tile v-for="(menu, i) in menus" :key="i" @click="undefined">
-            <v-list-tile-title @click="menu.click">{{ menu.title }}</v-list-tile-title>
+            <v-list-tile-title class="hover" @click="menu.click">{{ menu.title }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -122,5 +122,10 @@ export default class Header extends Vue {
 }
 .login {
   font-weight: bold;
+}
+
+.hover:hover{
+  cursor: pointer;
+  opacity: 0.6;
 }
 </style>
