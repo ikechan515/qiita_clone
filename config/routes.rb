@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "articles/drafts/:id/edit", to: "homes#index"
   get "articles/:id/edit", to: "homes#index"
   get "articles/:id", to: "homes#index"
+  get "mypage", to: "homes#index"
 
   namespace :api, format: :json do
     namespace :v1 do
@@ -19,7 +20,12 @@ Rails.application.routes.draw do
       namespace :articles do
         resources :drafts, only: [:index, :show]
       end
+
       resources :articles
+
+      namespace :current do
+        resources :articles, only: [:index]
+      end
     end
   end
 end
