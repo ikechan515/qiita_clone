@@ -2,6 +2,10 @@
 おなじみ Qiita のクローンWebアプリを作成しました。
 [Portfolio 『 Qiita_clone 』](https://secret-dusk-44125.herokuapp.com/)
 
+***sample ユーザーでログイン***
+email: sample@sample.com
+password: sample
+
 ## 機能一覧
 
 - ユーザー登録
@@ -15,14 +19,14 @@
 ***ログイン時のみ使用可能***
 
 - 記事の投稿
- - リアルタイムプレビュー ( Markdown ・ Syntax Highlight で表示 )
- - 下書き保存
+  - リアルタイムプレビュー ( Markdown ・ Syntax Highlight で表示 )
+  - 下書き保存
 
 - 記事の編集・削除
 
 - マイページ
- - 自身の投稿記事一覧の表示
- - 下書き一覧の表示
+  - 自身の投稿記事一覧の表示
+  - 下書き一覧の表示
 
 ## 使用した技術一覧
 - Ruby 2.6.3
