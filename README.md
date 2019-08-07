@@ -1,9 +1,9 @@
 ## 概要
-おなじみ Qiita のクローンWebアプリを作成しました。
+おなじみ Qiita のクローンWebアプリを作成しました。<br>
 [Portfolio 『 Qiita_clone 』](https://secret-dusk-44125.herokuapp.com/)
 
-***sample ユーザーでログイン***
-email: sample@sample.com
+***sample ユーザーでログイン***<br>
+email: sample@sample.com<br>
 password: sample
 
 ## 機能一覧
