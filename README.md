@@ -1,24 +1,34 @@
-# README
+## 概要
+おなじみ Qiita のクローンWebアプリを作成しました。
+[Portfolio 『 Qiita_clone 』](https://secret-dusk-44125.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 機能一覧
 
-Things you may want to cover:
+- ユーザー登録
+- ログイン・ログアウト
 
-* Ruby version
+***ログインなしで使用可能***
 
-* System dependencies
+- 全投稿記事一覧の表示
+- 各記事詳細の表示
 
-* Configuration
+***ログイン時のみ使用可能***
 
-* Database creation
+- 記事の投稿
+ - リアルタイムプレビュー ( Markdown ・ Syntax Highlight で表示 )
+ - 下書き保存
 
-* Database initialization
+- 記事の編集・削除
 
-* How to run the test suite
+- マイページ
+ - 自身の投稿記事一覧の表示
+ - 下書き一覧の表示
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用した技術一覧
+- Ruby 2.6.3
+- Ruby on Rails 5.2.3
+- WebAPI を返して Vue.js でフロントエンドを実装
+- Docker でデータベース環境構築 ( MySQL )
+- テスト環境構築 (RSpec)
+- デプロイ (Heroku)
+- ログイン機能 (devise_token_auth)
