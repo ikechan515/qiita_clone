@@ -3,7 +3,7 @@
 [Portfolio 『 Qiita_clone 』](https://secret-dusk-44125.herokuapp.com/)
 
 ***sample ユーザーでログイン***<br>
-email: sample@sample.com<br>
+email: [sample@sample.com](https://secret-dusk-44125.herokuapp.com/)<br>
 password: sample
 
 ## 機能一覧
